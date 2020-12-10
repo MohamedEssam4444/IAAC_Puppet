@@ -59,7 +59,7 @@ EOF`
 * contain files that store roles we want to apply, those files end with .pp extension
 * In puppet, all the programs are written in Ruby programming language and added with an extension of .pp is known as manifests. The full form of .pp is the puppet program.
 * Manifest files are puppet programs. This is used to manage the target host system
-    4. **site.pp**: where puppet master first look for configurations, details about the system when the puppet agent checks in . 
+4. **site.pp**: where puppet master first look for configurations, details about the system when the puppet agent checks in . 
     * contain node defininstions which define what classes(roles) will be included for what nodes 
     * here we specificy 4 roles 3 roles of them for specific nodes: for master.puppet.vm , and any node it's name end with web and any node end with db and the 4th rule which is for the default node is for any nodes other than those 3 specified
 5. **site**: 
