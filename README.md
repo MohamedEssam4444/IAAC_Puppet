@@ -1,5 +1,5 @@
 # IAAC using Puppet
-controlling nodes using declarative language (puppet) to maintain services on remote servers and execute commands remotely to them using client-server archeticture .
+controlling nodes using declarative language (puppet) to maintain services on remote servers and execute commands remotely to them by simulating nodes by using Dockeragents .
 ## Archeticture
 
 ![Blank diagram (1)](https://user-images.githubusercontent.com/68178003/101755784-f6ef6680-3add-11eb-83a8-b399b4503ad7.jpeg)
