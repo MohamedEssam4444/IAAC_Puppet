@@ -34,8 +34,8 @@ $ `sudo gem install puppet-0.25.1.gem `
 * Gem file can be used to install r10k on any machine.
 * `gem install r10k`
 * Configure environment in `/etc/puppet/puppet.conf`:
-`[agent]` 
-`server=master.puppet.vm` #when puppet agent runs the system will need to know what puppet server to point to
+* `[agent]` 
+* `server=master.puppet.vm` #when puppet agent runs the system will need to know what puppet server to point to
 * Create a Configuration File for r10k Config
 `cat <<EOF >/etc/r10k.yaml 
 #The location to use for storing cached Git repos 
