@@ -18,7 +18,14 @@ Facts are the details related to the node or the master machine, which are basic
 
 * **Catalog**:
 All the manifest files or configuration which are written in Puppet are first converted to a compiled format called catalog and later those catalogs are applied on the target machine.
+### installation :
+* #Installing Facter 
+$ `wget http://puppetlabs.com/downloads/gems/facter-1.5.7.gem `
+$ `sudo gem install facter-1.5.7.gem`
 
+* #Installing Puppet 
+$ `wget http://puppetlabs.com/downloads/gems/puppet-0.25.1.gem `
+$ `sudo gem install puppet-0.25.1.gem `
 ### Files & directories:
 * **puppetfile**:
 * Contain modules to be downloaded and installed
@@ -28,7 +35,24 @@ All the manifest files or configuration which are written in Puppet are first co
 * In Puppet, we have a code management tool known as r10k that helps in managing environment configurations related to different kind of environments that we can configure in Puppet such as development, testing, and production. This helps in storing environment-related configuration in the source code repository. Using the source control repo branches, r10k creates environments on Puppet master machine installs and updates environment using modules present in the repo.
 
 * Gem file can be used to install r10k on any machine.
-* `gem install r10k` 
+* `gem install r10k`
+* Configure environment in `/etc/puppet/puppet.conf`:
+`[agent]` 
+`server=master.puppet.vm` #when puppet agent runs the system will need to know what puppet server to point to
+* Create a Configuration File for r10k Config
+`cat <<EOF >/etc/r10k.yaml 
+#The location to use for storing cached Git repos 
+:cachedir: '/var/cache/r10k' 
+#A list of git repositories to create 
+:sources: 
+#This will clone the git repository and instantiate an environment per
+  #branch in /etc/puppetlabs/code/environments
+  :my-org:
+    remote: 'https://github.com/$YOUR_GITHUB_USERNAME$/control-repo.git'
+    basedir: '/etc/puppetlabs/code/environments'
+EOF`
+* on the shell terminal: 
+`r10 deploy environmnet -p`
 * **environmnet.conf**: 
 * Contain Modulepath
 * This is one of the key settings in environment.conf file. All the directors defined in modulepath are by default loaded by Puppet. This is the path location from where Puppet loads its modules
