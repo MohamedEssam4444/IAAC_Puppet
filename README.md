@@ -2,7 +2,7 @@
 controlling nodes using declarative language (puppet) to maintain services on remote servers and execute commands remotely to them by simulating nodes by using Dockeragents .
 ## Archeticture
 
-![Blank diagram (1)](https://user-images.githubusercontent.com/68178003/101755784-f6ef6680-3add-11eb-83a8-b399b4503ad7.jpeg)
+![Blank diagram (2)](https://user-images.githubusercontent.com/68178003/101762719-74b77000-3ae6-11eb-91a1-632409354194.jpeg)
 
 * **Puppet Master**:
 Puppet Master is the key mechanism which handles all the configuration related stuff. It applies the configuration to nodes using the Puppet agent. recieve facts from agents and process them and send them back as catalog which is rules given to agent which then given to package providers to execute these rules on agent pc .
@@ -19,9 +19,6 @@ Facts are the details related to the node or the master machine, which are basic
 * **Catalog**:
 All the manifest files or configuration which are written in Puppet are first converted to a compiled format called catalog and later those catalogs are applied on the target machine.
 ### installation :
-* #Installing Facter 
-$ `wget http://puppetlabs.com/downloads/gems/facter-1.5.7.gem `
-$ `sudo gem install facter-1.5.7.gem`
 
 * #Installing Puppet 
 $ `wget http://puppetlabs.com/downloads/gems/puppet-0.25.1.gem `
