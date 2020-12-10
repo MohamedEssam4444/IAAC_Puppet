@@ -1,5 +1,5 @@
 # IAAC using Puppet
-controlling nodes using declarative language (puppet) to maintain services on remote servers and execute commands remotely to them by simulating nodes by using Dockeragents .
+controlling nodes using declarative language (puppet) to maintain services on remote servers and execute commands remotely to them by simulating nodes by using Dockeragents , it installs docker on the master and deploy couple of containers that behave like separate nodes .
 ## Archeticture
 
 ![Blank diagram (2)](https://user-images.githubusercontent.com/68178003/101762719-74b77000-3ae6-11eb-91a1-632409354194.jpeg)
@@ -18,6 +18,7 @@ Facts are the details related to the node or the master machine, which are basic
 
 * **Catalog**:
 All the manifest files or configuration which are written in Puppet are first converted to a compiled format called catalog and later those catalogs are applied on the target machine.
+
 ### installation :
 
 * #Installing Puppet 
@@ -52,8 +53,8 @@ EOF`
 `r10 deploy environmnet -p`
 * **environmnet.conf**: 
 * Contain Modulepath
-* This is one of the key settings in environment.conf file. All the directors defined in modulepath are by default loaded by Puppet. This is the path location from where Puppet loads its modules
-* needs to explicitly set this up
+* This is one of the key settings in environment.conf file. All the directories defined in modulepath are by default loaded by Puppet. This is the path location from where Puppet loads its modules where this directory hold custom profiles used later by nodes
+* needs to explicitly set this up to tell r10k where it will deploy Forge modules .
 * **Manifests**: 
 * contain files that store roles we want to apply, those files end with .pp extension
 * In puppet, all the programs are written in Ruby programming language and added with an extension of .pp is known as manifests. The full form of .pp is the puppet program.
@@ -73,8 +74,12 @@ bundle together specific configuration into more abstracted layer : **profile** 
 * **Profile**: 
 * classes that group together subset of configurations
 * for example: webserver would go to one profile and db to another profile
+#### examples :
 * **base**: profile included in all roles so each node has this profile, in this example it ensures that the user admin is present on each node as shown in the roles
 * **agent_nodes**: deploy 2 docker agents named web and db on the puppet master which will then be include in the roles directory in the master role 
 * **Roles**:
 * Finally each machine will get assigned one role class which bundles up collections of profiles 
 * class is a collection of puppet code that group together resources under a name that can be included in other code  
+#### Run:
+1. to deploy code from github repo to master : `r10 deploy environment -p`
+2. to apply it to agents : `puppet agent -t`
