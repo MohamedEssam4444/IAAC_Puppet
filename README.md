@@ -81,5 +81,5 @@ bundle together specific configuration into more abstracted layer : **profile** 
 * Finally each machine will get assigned one role class which bundles up collections of profiles 
 * class is a collection of puppet code that group together resources under a name that can be included in other code  
 #### Run:
-1. to deploy code from github repo to master : `r10 deploy environment -p`
+1. to deploy code from github repo to master : `r10k deploy environment -p`
 2. to apply it to agents : `puppet agent -t`
