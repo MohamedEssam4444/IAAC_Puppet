@@ -50,7 +50,7 @@ $ `sudo gem install puppet-0.25.1.gem `
     basedir: '/etc/puppetlabs/code/environments'
 EOF`
 * on the shell terminal: 
-`r10 deploy environmnet -p`
+`r10k deploy environmnet -p`
 2. **environment.conf**: 
 * Contain Modulepath
 * This is one of the key settings in environment.conf file. All the directories defined in modulepath are by default loaded by Puppet. This is the path location from where Puppet loads its modules where this directory hold custom profiles used later by nodes
